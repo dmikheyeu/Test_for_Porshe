@@ -9,7 +9,6 @@ public class BlockAdmin extends MainPage{
 
     @Step ("Go to Admin page")
     public void clickToAdmin() {
-
         BlockAdmin.click();
     }
 

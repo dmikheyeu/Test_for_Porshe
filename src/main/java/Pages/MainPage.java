@@ -1,12 +1,24 @@
 package Pages;
 
+import SelenideElements.AdminMenuSelenideElements;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byText;
 import io.qameta.allure.Step;
+import org.checkerframework.checker.units.qual.A;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage extends DriverConfig {
+
+    AdminMenuSelenideElements adminMenuSelenideElements = new AdminMenuSelenideElements();
+
+    @Step
+    public void NewLocators(){
+        BlockReservation.click();
+        adminMenuSelenideElements.HeaderTitle.click();
+    }
+
+
 
     @Step(value = "Open to site")
     public void openSite() {
