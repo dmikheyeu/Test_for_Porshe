@@ -30,4 +30,20 @@ public class SimpleTest extends MainPage {
         initPage.returnKey.checkThatAllElementsIsDisplayed();
         initPage.returnKey.clickOnFinalReturnButton();
     }
+
+    @Test
+    @DisplayName("ASdasdas")
+    public void newTest(){
+
+    }
+    @Test
+    @DisplayName("ASdasdas")
+    public void newTe21st(){
+
+    }
+    @Test
+    @DisplayName("ASdasdas")
+    public void new123Test(){
+
+    }
 }
