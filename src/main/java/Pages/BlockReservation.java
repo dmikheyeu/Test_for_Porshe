@@ -1,44 +1,38 @@
 package Pages;
 
-import SelenideElements.ReservationElements;
+import SelenideElements.BlockReservationElements;
 import io.qameta.allure.Step;
 
 public class BlockReservation extends MainPage {
 
-    ReservationElements reservationElements = new ReservationElements();
+    BlockReservationElements reservationElements = new BlockReservationElements();
 
-    @Step
-    public void checkOpenPage(){
-
-        reservationElements.TitlePage.isDisplayed();
-    }
-
-    @Step
+    @Step ( "Check that page have pickup-status 2 / green key" )
     public MainPage checkIsDisplayedPage() {
-
-        reservationElements.list.isDisplayed();
+        reservationElements.pickupListItemWithGreenKey.shouldHave().isDisplayed();
+        reservationElements.greenKey.shouldHave().isDisplayed();
+        reservationElements.TitlePage.shouldHave().isDisplayed();
         return this;
     }
 
-    @Step ("Check that Key is Green")
-    public void checkThatKeyIsGreen(){
-        reservationElements.greenKey.isDisplayed();
+//    @Step ( "Check that Reservation page is open" )
+//    public void checkThatReservationPageIsOpen(){
+//        reservationElements.greenKey.shouldHave().isDisplayed();
+//        reservationElements.TitlePage.shouldHave().isDisplayed();
+//    }
 
-    }
-
-    @Step ("User click on green key or reserveition")
-    public void clickOnReserveitionButton() {
-
+    @Step ("User click on green key or reservation")
+    public void clickOnReservationButton() {
         reservationElements.reservationButton.click();
     }
 
     @Step ("Check that Reservation details page is opened")
     public void reservationDetailsPage() {
-        reservationElements.reservationPickupContentWholePage.isDisplayed();
-        reservationElements.reservationPickupContentMaps.isDisplayed();
-        reservationElements.reservationPickupContentWholeForm.isDisplayed();
-        reservationElements.reservationPickupContentBackButton.isDisplayed();
-        reservationElements.reservationPickupContentNextButton.isDisplayed();
+        reservationElements.reservationPickupContentWholePage.shouldHave().isDisplayed();
+        reservationElements.reservationPickupContentMaps.shouldHave().isDisplayed();
+        reservationElements.reservationPickupContentWholeForm.shouldHave().isDisplayed();
+        reservationElements.reservationPickupContentBackButton.shouldHave().isDisplayed();
+        reservationElements.reservationPickupContentNextButton.shouldHave().isDisplayed();
     }
 
     @Step ("User click on the Next button")
@@ -47,10 +41,10 @@ public class BlockReservation extends MainPage {
         reservationElements.reservationPickupContentNextButton.click();
     }
 
-    @Step ("Check that User see uniq id")
+    @Step ("Check that User see unique id")
     public void userSeeDepotPopupWithText() {
-        reservationElements.checkThatUserSeeDepotPopup.isDisplayed();
-        reservationElements.checkThatUserSeeUniqId.isDisplayed();
+        reservationElements.checkThatUserSeeDepotPopup.shouldHave().isDisplayed();
+        reservationElements.checkThatUserSeeUniqueId.shouldHave().isDisplayed();
     }
 
     @Step ("User click on the Logo Images")

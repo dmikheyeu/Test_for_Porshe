@@ -1,11 +1,11 @@
 package Pages;
 
-import SelenideElements.ReturnPageElements;
+import SelenideElements.BlockReturnElements;
 import io.qameta.allure.Step;
 
 public class ReturnKey extends MainPage {
 
-    ReturnPageElements returnPageElements = new ReturnPageElements();
+    BlockReturnElements returnPageElements = new BlockReturnElements();
 
     @Step ("User click on the Logo Images")
     public void userClickOnTheLogoImages() {
@@ -15,18 +15,18 @@ public class ReturnKey extends MainPage {
     @Step ("User click on Return Block")
     public void userClickOnReturnBlock() {
 
-        returnPageElements.clickOnReturnBlock.click();
+        mainPageElements.blockReturn.click();
     }
 
     @Step ("Check that all elements id displayed")
     public void checkThatAllElementsIsDisplayed() {
-        returnPageElements.pickupListItem.isDisplayed();
-        returnPageElements.headerTitle.isDisplayed();
-        returnPageElements.carKeyButton.isDisplayed();
-        returnPageElements.blockReturnButton.isDisplayed();
-        returnPageElements.backButton.isDisplayed();
-        returnPageElements.finalReturnButton.isDisplayed();
-        returnPageElements.centerYellowButton.isDisplayed();
+        returnPageElements.pickupListItem.shouldHave().isDisplayed();
+        returnPageElements.headerTitle.shouldHave().isDisplayed();
+        returnPageElements.carKeyButton.shouldHave().isDisplayed();
+        returnPageElements.blockReturnButton.shouldHave().isDisplayed();
+        returnPageElements.backButton.shouldHave().isDisplayed();
+        returnPageElements.finalReturnButton.shouldHave().isDisplayed();
+        returnPageElements.centerYellowButton.shouldHave().isDisplayed();
     }
 
     @Step ("User click on Final Return Button")

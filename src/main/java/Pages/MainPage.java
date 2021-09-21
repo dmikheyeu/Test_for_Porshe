@@ -9,19 +9,29 @@ public class MainPage extends DriverConfig {
 
     MainPageElements mainPageElements = new MainPageElements();
 
-    @Step(value = "Open to site")
+    @Step( "Open to site" )
     public void openSite() {
         open("");
 
-        if (!mainPageElements.IdUser.exists()) {
-            mainPageElements.LogoPorshe.click();
+        if (!mainPageElements.idUser.exists()) {
+            mainPageElements.logoPorshe.click();
             }
         else {}
     }
 
+    @Step ( "Check that Main Page is open" )
+    public void mainPageIsOpen() {
+        mainPageElements.idUser.shouldHave().isDisplayed();
+        mainPageElements.blockReservation.shouldHave().isDisplayed();
+        mainPageElements.blockReturn.shouldHave().isDisplayed();
+        mainPageElements.blockAdmin.shouldHave().isDisplayed();
+        mainPageElements.blockBarcode.shouldHave().isDisplayed();
+        mainPageElements.logoPorshe.shouldHave().isDisplayed();
+    }
+
     @Step("Go to Reservation page")
     public MainPage clickToReservationButton() {
-        mainPageElements.BlockReservation.click();
+        mainPageElements.blockReservation.click();
 
         return new BlockReservation().checkIsDisplayedPage();
     }

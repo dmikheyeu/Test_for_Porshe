@@ -1,13 +1,11 @@
 package SelenideElements;
 
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$x;
 
-public class ReturnPageElements {
+public class BlockReturnElements {
 
     public SelenideElement clickOnTheLogoImages = $x("//*[contains(@src, 'public/images/logo.png')]");
-    public SelenideElement clickOnReturnBlock = $x("//*[contains(text(),'Rückgabe')]");
     public SelenideElement pickupListItem = $x("//*[contains(@class, 'pickup-list-item pickup-status2')]");
     public SelenideElement headerTitle = $x("//*[contains(@class, 'header-title')]");
     public SelenideElement carKeyButton = $x("//*[contains(@class, 'return-btn-small return-btn-key')]");
