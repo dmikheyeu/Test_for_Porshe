@@ -26,6 +26,7 @@ public class DriverConfig {
     @AfterAll
     @Step(value = "Close driver")
     public static void afterEach () {
+
         closeWebDriver();
     }
 }

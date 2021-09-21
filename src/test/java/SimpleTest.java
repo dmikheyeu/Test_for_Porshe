@@ -24,7 +24,7 @@ public class SimpleTest extends MainPage {
         initPage.adminMenu.checkThatUserSeeListOfKeys();
         initPage.adminMenu.checkThatHorizontalLineIsNonEmpty();
         initPage.adminMenu.checkThatHorizontalLineIsEmpty();
-//        initPage.adminMenu.clickToBackButton(); открывается какое-то говно после нажатия на BACK button
+        initPage.adminMenu.clickToBackButton();
         initPage.returnKey.userClickOnTheLogoImages();
         initPage.returnKey.userClickOnReturnBlock();
         initPage.returnKey.checkThatAllElementsIsDisplayed();

@@ -1,75 +1,61 @@
 package Pages;
 
-import com.codeborne.selenide.SelenideElement;
+import SelenideElements.ReservationElements;
 import io.qameta.allure.Step;
-
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class BlockReservation extends MainPage {
 
+    ReservationElements reservationElements = new ReservationElements();
+
     @Step
     public void checkOpenPage(){
-        TitlePage.isDisplayed();
+
+        reservationElements.TitlePage.isDisplayed();
     }
 
     @Step
     public MainPage checkIsDisplayedPage() {
 
-        list.isDisplayed();
+        reservationElements.list.isDisplayed();
         return this;
     }
 
     @Step ("Check that Key is Green")
     public void checkThatKeyIsGreen(){
-        greenKey.isDisplayed();
+        reservationElements.greenKey.isDisplayed();
 
     }
 
     @Step ("User click on green key or reserveition")
     public void clickOnReserveitionButton() {
-        reservationButton.click();
+
+        reservationElements.reservationButton.click();
     }
 
     @Step ("Check that Reservation details page is opened")
     public void reservationDetailsPage() {
-        reservationPickupContentWholePage.isDisplayed();
-        reservationPickupContentMaps.isDisplayed();
-        reservationPickupContentWholeForm.isDisplayed();
-        reservationPickupContentBackButton.isDisplayed();
-        reservationPickupContentNextButton.isDisplayed();
+        reservationElements.reservationPickupContentWholePage.isDisplayed();
+        reservationElements.reservationPickupContentMaps.isDisplayed();
+        reservationElements.reservationPickupContentWholeForm.isDisplayed();
+        reservationElements.reservationPickupContentBackButton.isDisplayed();
+        reservationElements.reservationPickupContentNextButton.isDisplayed();
     }
 
     @Step ("User click on the Next button")
     public void userClickOnTheNextButton() {
-        reservationPickupContentNextButton.click();
+
+        reservationElements.reservationPickupContentNextButton.click();
     }
 
     @Step ("Check that User see uniq id")
     public void userSeeDepotPopupWithText() {
-        checkThatUserSeeDepotPopup.isDisplayed();
-        checkThatUserSeeUniqId.isDisplayed();
+        reservationElements.checkThatUserSeeDepotPopup.isDisplayed();
+        reservationElements.checkThatUserSeeUniqId.isDisplayed();
     }
 
     @Step ("User click on the Logo Images")
     public void userClickOnTheLogoImages() {
-        clickOnTheLogoImages.click();
+
+        reservationElements.clickOnTheLogoImages.click();
     }
-
-
-
-    public SelenideElement TitlePage = $x("//*[contains(text(), 'Abholung')]");
-    public SelenideElement list = $x("//*[contains(@class,'pickup-list-item pickup-status3')]");
-    public SelenideElement greenKey = $x("//*[contains(@src,'public/images/key-green.png')]");
-//    public SelenideElement yellowKey = $x("//*[contains(@src,'public/images/key-yellow.png')]");
-//    public SelenideElement redKey = $x("//*[contains(@src,'public/images/key-red.png')]");
-    public SelenideElement reservationButton = $(byText("Reserviert"));
-    public SelenideElement reservationPickupContentWholePage = $x("//*[contains(@class,'pickup-content')]");
-    public SelenideElement reservationPickupContentMaps = $x("//*[contains(@class,'ol-viewport')]");
-    public SelenideElement reservationPickupContentWholeForm = $x("//*[contains(@class,'pickup-form')]");
-    public SelenideElement reservationPickupContentBackButton = $x("//*[contains(@class,'btn btn-secondary btn-lg mb-4')]");
-    public SelenideElement reservationPickupContentNextButton = $x("//*[contains(@class,'footer-block-right')]");
-    public SelenideElement checkThatUserSeeDepotPopup = $x("//*[contains(@class, 'pickup-detail-popup')]");
-    public SelenideElement checkThatUserSeeUniqId = $x("//*[@id=\"depotMessage\"]/b");
-    public SelenideElement clickOnTheLogoImages = $x("//*[contains(@src, 'public/images/logo.png')]");
 }
