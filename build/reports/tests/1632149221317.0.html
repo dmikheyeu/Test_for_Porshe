@@ -1,0 +1,186 @@
+<html><head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Porsche</title>
+        <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="public/css/all.css">
+        <script type="text/javascript" src="public/js/jquery/1.11.0/jquery_1_11_0.js"></script>
+        <script type="text/javascript" src="public/js/main.js"></script>
+        <script type="text/javascript" src="public/js/popper.min.js"></script>
+        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery.plugin.js"></script>
+        <script type="text/javascript" src="public/js/moment.js"></script>
+        <script type="text/javascript" src="public/js/moment-timezone-new.js"></script>
+        <meta name="google" content="notranslate">
+    </head>
+    <body>
+                   <script>
+                //timer
+                var timeLeft = 60;
+                var timerId = setInterval(countdown, 1000);
+                var elem = document.getElementById('timer');
+
+                $(document).ready(function () {
+                    $('html').bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
+                        timeLeft = 60;
+                        $('#popup_countdown').css('display', 'none');
+                    });
+                });
+
+                function countdown() {
+                    if (timeLeft == 0) {
+                        clearTimeout(timerId);
+                        doSomething();
+                    } else if (timeLeft == 10) {
+                        $('#popup_countdown').css('display', 'block');
+                    }
+                    document.getElementById("timer2").innerHTML = timeLeft;
+                    document.getElementById("countdown_counter").innerHTML = timeLeft;
+                    console.log(timeLeft);
+                    timeLeft--;
+
+                }
+                function doSomething() {
+                    $("#logout").trigger('click');
+                }
+            </script>
+            <script>
+                window.oncontextmenu = function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return false;
+                };
+            </script>
+                            <div class="app-body">
+                <img src="public/images/bg.jpg" alt="">
+            </div>
+        <div class="header">
+            <div class="logo-wrapper">
+                <a href="/"><img src="public/images/logo.png" width="80" alt=""></a>
+            </div>
+<div class="header-title">
+    <h3></h3>
+</div>
+
+    <div class="header-detail">
+        <a id="logout" onclick="logout();"><span>Abmelden</span> <img src="public/images/logout.png"></a>
+        <p>admin - <span id="timer2"></span>s</p>
+    </div>
+</div>
+<script>
+    function logout() {
+        var local_ip = '172.18.0.1';
+        jQuery.ajax({
+            type: "POST",
+            url: 'logout.php',
+            dataType: 'html',
+            success: function (resp) {
+                document.cookie = "cookiename=x; expires= Thu, 21 Aug 2014 20:00:00 UTC; path=/ ";
+                document.cookie = "cookiename=y; expires= Thu, 21 Aug 2014 20:00:00 UTC; path=/ ";
+                document.cookie = "cookiename=z; expires= Thu, 21 Aug 2014 20:00:00 UTC; path=/ ";
+                if (resp == '1') {
+                    var host = location.hostname;
+                    if (local_ip == host) {
+                        var host = location.hostname;
+                        window.location.replace('http://' + host +'/index.php');
+                    } else {
+                        var host = location.hostname;
+                        window.location.replace('http://' + host +'/index.php');
+                    }
+                }
+            }
+        });
+    }
+</script>
+    <div class="content-body">
+        <div class="menu-content">
+            <div class="menu-item3">
+                <h2>Abholung</h2>
+                <a class="btn-block menu-btn" href="reservation_list">Meine<br>Reservierungen</a>
+                <a class="btn-block menu-btn" href="pickup_scancard">Barcode scannen<br>oder<br>Reservierung eingeben</a>
+            </div>
+            <div class="menu-item3">
+                <h2>Rückgabe</h2>
+                <a class="btn-block menu-btn" href="return_scancard.php">Schlüssel und <br>Fahrtenbuch</a>
+            </div>
+                        <div class="menu-item3">
+                <h2>Admin</h2>
+                <a class="btn-block menu-btn" href="admin_list1.php">Verwaltung</a>
+                <!--<a class="btn-block menu-btn" href="admin_list2.php">test</a>-->
+            </div>
+                        <div class="menu-item3">
+            </div>
+        </div>
+          <div class="popup" id="popup" style="display:none;">
+            <div class="popup-bg"></div>
+            <a class="pickup-detail-popup" href="#" id="depotMessage"></a>
+        </div>
+    </div>
+<div class="loader-bg" style="display:none;">
+    <div class="loader"></div>
+</div>
+<div class="popup" id="popup_countdown" style="display: none;">
+    <div class="popup-bg"></div>
+    <a class="pickup-detail-popup" href="#" id="popup_Message">Sie werden in <b><span id="countdown_counter"></span></b> Sekunden automatisch abgemeldet.</a>
+</div>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script><script>
+    //disable reader
+var parm = {'api_id':'14', 'readerNo':'1'};
+var result = callapi('14', parm, 'http://127.0.0.1/anubis/services/soap/remotectrl/', '1');
+//code for validation message
+    $(window).load(function(){
+
+        setdatetime();
+        var msg = '0';
+        if(msg!='0'){
+            var msgval = '';
+            if(msg==1){ //translate
+                msgval='Reservierungsliste ist leer';
+            }
+            if(msg==2){
+                msgval='Der QR-Code stimmt nicht mit unseren Daten überein';
+            }
+            if(msg==3){
+                msgval='Der QR-Code stimmt nicht mit unseren Daten überein';
+            }
+            $('#depotMessage').html(msgval);
+            $("#popup").css("display","block");
+            setTimeout(function(){
+                $("#popup").css("display","none");
+             }, 2000);
+        }
+
+        //new code
+        setCookie("bigmap_called", 0, 30);
+        setCookie("x", '', 30);
+        setCookie("y", '', 30);
+        setCookie("defaultKeypad3", '', 30);
+        setCookie("bigmap_called", '', 30);
+        setCookie("maptab", '', 30);
+        setCookie("selectedmap_val", '', 30);
+        setCookie("parkhaus_val", '', 30);
+        setCookie("mapflag", '', 30);
+        setCookie("parkhaus", '', 30);
+        setCookie("defaultKeypad4", '', 30);
+        setCookie("defaultKeypad5", '', 30);
+        setCookie("keypad_called", '', 30);
+        setCookie("keypad_called_function", '', 30);
+        setCookie("markerconfirm", '0', 30);
+        //new code
+    });
+
+//function for set cookies value
+function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+</script>
+</body></html>

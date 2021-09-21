@@ -1,0 +1,265 @@
+<html><head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Porsche</title>
+        <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="public/css/all.css">
+        <script type="text/javascript" src="public/js/jquery/1.11.0/jquery_1_11_0.js"></script>
+        <script type="text/javascript" src="public/js/main.js"></script>
+        <script type="text/javascript" src="public/js/popper.min.js"></script>
+        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery.plugin.js"></script>
+        <script type="text/javascript" src="public/js/moment.js"></script>
+        <script type="text/javascript" src="public/js/moment-timezone-new.js"></script>
+        <meta name="google" content="notranslate">
+    </head>
+    <body>
+                        <div class="header">
+            <div class="logo-wrapper">
+                <a href="/"><img src="public/images/logo.png" width="80" alt=""></a>
+            </div>
+<div class="header-title">
+    <h3></h3>
+</div>
+
+    <div class="header-detail">
+        <a id="logout" onclick="logout();"><span>Abmelden</span> <img src="public/images/logout.png"></a>
+        <p> - <span id="timer2"></span>s</p>
+    </div>
+</div>
+<script>
+    function logout() {
+        var host = location.hostname;
+        window.location.replace('http://' + host +'/logout.php');
+    }
+</script>
+
+<meta http-equiv="refresh" content="600">
+<meta http-equiv="Cache-Control" content="no-store">
+
+<script type="text/javascript" src="public/js/main.js"></script>
+<link type="text/css" href="public/css/jquery.keypad.css" rel="stylesheet">
+<script type="text/javascript" src="public/js/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/jquery.plugin.js"></script>
+<script type="text/javascript" src="public/js/jquery.keypad.js"></script>
+<script>
+    //code for keypad
+    var selected = "";
+    function onFocus(ele) {
+        selected = ele.id;
+    }
+    $(function () {
+        //$('#defaultKeypad').keypad();
+        $('#inlineKeypad').keypad(
+                {
+                    closeText: '',
+                    prompt: 'Keypad',
+                    keypadOnly: false,
+                    onKeypress: appendValue,
+                    onClose: function () {
+                    },
+                }
+        );
+    });
+    function appendValue(key, value, inst) {
+        var field = $('#' + selected);
+        if (key === $.keypad.DEL) {
+            var strng = document.getElementById(selected).value;
+
+            document.getElementById(selected).value = strng.substring(0, strng.length - strng.length)
+        } else if (key === $.keypad.BS) {
+            var strng = document.getElementById(selected).value;
+
+            document.getElementById(selected).value = strng.substring(0, strng.length - 1)
+        } else {
+            $.keypad.insertValue(field, key);
+            field.focus();
+        }
+    }
+</script>
+<div class="app-body">
+    <img src="public/images/bg.jpg" alt="">
+</div>
+<div class="content-body">
+    <a class="btn-block login-btn" href="#" onclick="login()">
+        Bitte melden Sie sich mit<br>Ihrem Mitarbeiterausweis<br>am Terminal an.
+    </a>
+
+  <!--  <div class="keypad-box" style="position:absolute; right: 10%;">
+        <p>
+            <span class="form-header">Mitarbeiter Karte:</span><br>
+            <input  class="deletesector" onfocus="onFocus(this)" type="text" id="defaultKeypad" autofocus>
+        </p>
+        <div id="inlineKeypad"></div>
+    </div>-->
+
+    <div class="popup" id="popup" style="display: none;">
+        <div class="popup-bg"></div>
+        <a class="pickup-detail-popup" id="popup_msg" href="#"></a>
+    </div>
+</div>
+<div class="loader-bg" style="display:none;">
+    <div class="loader"></div>
+</div>
+<div class="popup" id="popup_countdown" style="display: none;">
+    <div class="popup-bg"></div>
+    <a class="pickup-detail-popup" href="#" id="popup_Message">Sie werden in <b><span id="countdown_counter"></span></b> Sekunden automatisch abgemeldet.</a>
+</div>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script><script>
+    $(document).ready(function () {
+        setdatetime();
+        autosaprequest();
+        autoload_page();
+        //remove all cookies value
+        setCookie('gewaschen', '0', '-30');
+        setCookie('tankkaarte1', '0', '-30');
+        setCookie('fuel', '0', '-30');
+        setCookie('defaultKeypad', '0', '-30');
+        setCookie('pudis', '0', '-30');
+        setCookie('reifenzustand', '0', '-30');
+        setCookie('softwareveranderungen', '0', '-30');
+        setCookie('ausgangszustand', '0', '-30');
+        setCookie('bauteilveranderungen', '0', '-30');
+        setCookie('parkhaus', '0', '-30');
+        setCookie('defaultKeypad2', '0', '-30');
+        setCookie('x', '0', '-30');
+        setCookie('y', '0', '-30');
+        setCookie('z', '0', '-30');
+        var val1 = val2 = '';
+        //key pad validation code
+        $(".keypad-back").click(function () {
+            $('#defaultKeypad').blur();
+            $('#defaultKeypad').focus();
+        });
+        $(".keypad-OK").click(function () {
+            val1 = $('#defaultKeypad').val();
+            val1 = val1.trim(); //val2=val2.trim();
+            $('#defaultKeypad').val(val1.trim());
+            $('#defaultKeypad').blur();
+            var val1_length = val1.toString().length;
+            if (val1_length <= '1') {
+                //translate
+                $('#popup_msg').html('Bitte die richtige Ziffer der Reservierungsnummer eingeben');
+                $("#popup").css("display", "block");
+                setTimeout(function () {
+                    $("#popup").css("display", "none");
+                }, 2000);
+            } else {
+                var enq_no = val1;
+                var host = location.hostname;
+                window.location.replace('http://' + host + '//menu.php?card_no=' + enq_no);
+            }
+        });
+
+        //check for validation message
+        var msg_id = '0';
+        if (msg_id == '1') {
+            $('#popup_msg').html('Der Mitarbeiterausweis konnte nicht gelesen werden. Bitte versuchen Sie es erneut.');
+            $("#popup").css("display", "block");
+            setTimeout(function () {
+                $("#popup").css("display", "none");
+            }, 2000);
+        }
+        //code for enable reader
+        finalResult = '';
+        var parm = {'api_id': '13', 'readerNo': '1'};
+        var result = callapi('13', parm, 'http://127.0.0.1/anubis/services/soap/remotectrl/', '1');
+        setTimeout(function () {
+            finalResult = finalResult.replace("Connection established.<br />", "")
+            var finalResultjson = JSON.parse(finalResult);
+            if (finalResultjson.errorData.errorCode != '0' && finalResultjson.errorData.errorCode != '00') {
+                $('#popup_msg').html(finalResultjson.errorData.errorMessage);
+                $("#popup").css("display", "block");
+                setTimeout(function () {
+                    $("#popup").css("display", "none");
+                }, 3000);
+            } else {
+                ///checkCardPosition();//first calling //mannual stop for testing
+                getreaderdata();//first calling //mannual stop for testing
+            }
+        }, 3000);
+    });
+
+//function for set cookies value
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+//function for ceck card position
+    function checkCardPosition() {
+        finalResult = '';
+        var parm = {'api_id': 16, 'readerNo': '1'};
+        var result = callapi(16, parm, 'http://127.0.0.1/anubis/services/soap/remotectrl/', '1');
+        setTimeout(function () {
+            finalResult = finalResult.replace("Connection established.<br />", "")
+            var finalResultjson = JSON.parse(finalResult);
+            if (finalResultjson.errorData.errorCode != '0' && finalResultjson.errorData.errorCode != '00') {
+                $('#popup_msg').html(finalResultjson.errorData.errorMessage);
+                $("#popup").css("display", "block");
+                setTimeout(function () {
+                    $("#popup").css("display", "none");
+                }, 2000);
+            } else {
+                getreaderdata();//first calling
+            }
+        }, 1500);
+    }
+
+//function reader data
+    function getreaderdata() {
+        finalResult = '';
+        var parm = {'api_id': 15, 'readerNo': '1'};
+        var result = callapi(15, parm, 'http://127.0.0.1/anubis/services/soap/remotectrl/', '1');
+        setTimeout(function () {
+            finalResult = finalResult.replace("Connection established.<br />", "")
+            var finalResultjson = JSON.parse(finalResult);
+            if (finalResultjson.errorData.errorCode != '0' && finalResultjson.errorData.errorCode != '00') {
+                $('#popup_msg').html(finalResultjson.errorData.errorMessage);
+                $("#popup").css("display", "block");
+                setTimeout(function () {
+                    $("#popup").css("display", "none");
+                }, 6000);
+
+            } else {
+                var readerdata = finalResultjson.data.SBody.ns1GetReaderDataResponse.GetReaderDataResponse.ns1readerData;
+                if (readerdata != '') {
+                    var host = location.hostname;
+                    window.location.replace('http://' + host + '/menu.php?card_no=' + readerdata.substring(2));
+                } else {
+                    ///checkCardPosition();//secound calling
+                    getreaderdata();//secound calling
+                }
+            }
+        }, 1500);
+    }
+
+    function autoload_page(){
+        setTimeout(function(){
+            location.reload(true);
+        },300000);
+    }
+
+    //funcation for call the api
+    function autosaprequest() {
+        var local_ip = '192.168.48.1';
+        jQuery.ajax({
+            type: "POST",
+            url: 'ajax.php',
+            data: {functionname: 'autosaprequest'},
+            dataType: 'html',
+            async: true,
+            success: function (resp) {
+            }
+        });
+}
+</script>
+<div class="keypad-popup" style="display: none;"></div></body></html>
