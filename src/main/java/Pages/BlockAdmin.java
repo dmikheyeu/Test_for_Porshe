@@ -2,7 +2,6 @@ package Pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public class BlockAdmin extends MainPage{
@@ -41,8 +40,8 @@ public class BlockAdmin extends MainPage{
     public SelenideElement SearchFieldText = $x("//*[contains(@id,'searchFieldText')]");
     public SelenideElement SearchFieldButton = $x("//*[contains(@class,'search-field_button')]");
     public SelenideElement PickupTableHeader = $x("//*[contains(@class,'pickup-table-header')]");
-    public SelenideElement HorizontalLine = $x("//html/body/div[2]/div/div[2]/div[2]/table/tbody/tr[1]");
-    public SelenideElement HorizontalLineIsNonEmpty = $x("//html/body/div[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[3]/a");
-    public SelenideElement HorizontalLineIsEmpty = $x("//html/body/div[2]/div/div[2]/div[2]/table/tbody/tr[3]/td[3]/a");
+    public SelenideElement HorizontalLine = $x("//body/div[2]/div/div[2]/div[2]/table/tbody/tr[1]");
+    public SelenideElement HorizontalLineIsNonEmpty = $x("//div[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[3]/a");
+    public SelenideElement HorizontalLineIsEmpty = $x("//div[2]/div/div[2]/div[2]/table/tbody/tr[3]/td[3]/a");
     public SelenideElement BackButton = $x("//*[contains(text(),'ZURÜCK')]");
 }

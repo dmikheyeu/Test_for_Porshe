@@ -18,8 +18,6 @@ public class MainPage extends DriverConfig {
         adminMenuSelenideElements.HeaderTitle.click();
     }
 
-
-
     @Step(value = "Open to site")
     public void openSite() {
         open("");
