@@ -1,6 +1,6 @@
 package Pages;
 
-import SelenideElements.BlockReservationElements;
+import PagesElements.BlockReservationElements;
 import io.qameta.allure.Step;
 
 public class BlockReservation extends MainPage {
@@ -15,41 +15,47 @@ public class BlockReservation extends MainPage {
         return this;
     }
 
-//    @Step ( "Check that Reservation page is open" )
-//    public void checkThatReservationPageIsOpen(){
-//        reservationElements.greenKey.shouldHave().isDisplayed();
-//        reservationElements.TitlePage.shouldHave().isDisplayed();
-//    }
-
     @Step ("User click on green key or reservation")
-    public void clickOnReservationButton() {
+    public BlockReservation clickOnReservationButton() {
         reservationElements.reservationButton.click();
+        return reservationDetailsPage();
     }
 
     @Step ("Check that Reservation details page is opened")
-    public void reservationDetailsPage() {
+    public BlockReservation reservationDetailsPage() {
         reservationElements.reservationPickupContentWholePage.shouldHave().isDisplayed();
         reservationElements.reservationPickupContentMaps.shouldHave().isDisplayed();
         reservationElements.reservationPickupContentWholeForm.shouldHave().isDisplayed();
         reservationElements.reservationPickupContentBackButton.shouldHave().isDisplayed();
         reservationElements.reservationPickupContentNextButton.shouldHave().isDisplayed();
+        return this;
     }
 
     @Step ("User click on the Next button")
-    public void userClickOnTheNextButton() {
-
+    public BlockReservation clickOnTheNextButton() {
         reservationElements.reservationPickupContentNextButton.click();
+        return seeDepotPopupWithText();
     }
 
     @Step ("Check that User see unique id")
-    public void userSeeDepotPopupWithText() {
+    public BlockReservation seeDepotPopupWithText() {
         reservationElements.checkThatUserSeeDepotPopup.shouldHave().isDisplayed();
         reservationElements.checkThatUserSeeUniqueId.shouldHave().isDisplayed();
+        reservationElements.checkThatUserSeeUniqueId.getText();
+        String IdUnique = String.valueOf(reservationElements.checkThatUserSeeUniqueId);
+        return this;
     }
 
-    @Step ("User click on the Logo Images")
-    public void userClickOnTheLogoImages() {
+//    @Step ( "Check that User receive Depot Unique Number" )
+//    public BlockReservation receiveDepotNumber() {
+//        reservationElements.checkThatUserSeeUniqueId.getText();
+//        System.out.println(receiveDepotNumber());
+//        return this;
+//    }
 
-        reservationElements.clickOnTheLogoImages.click();
+    @Step ("User click on the Logo Images")
+    public void clickOnTheLogoImages() {
+
+        mainPageElements.logoPorshe.click();
     }
 }

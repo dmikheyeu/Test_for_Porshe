@@ -1,6 +1,6 @@
 package Pages;
 
-import SelenideElements.MainPageElements;
+import PagesElements.MainPageElements;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -29,11 +29,10 @@ public class MainPage extends DriverConfig {
         mainPageElements.logoPorshe.shouldHave().isDisplayed();
     }
 
-    @Step("Go to Reservation page")
+    @Step ( "Go to Reservation page" )
     public MainPage clickToReservationButton() {
         mainPageElements.blockReservation.click();
 
         return new BlockReservation().checkIsDisplayedPage();
     }
-    //TODO Сменить вид локализации обьекта на общий
 }

@@ -1,4 +1,4 @@
-package SelenideElements;
+package PagesElements;
 
 public class BlockBarcodeElements {
 }

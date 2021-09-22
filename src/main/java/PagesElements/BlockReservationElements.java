@@ -1,4 +1,4 @@
-package SelenideElements;
+package PagesElements;
 
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byText;
@@ -19,5 +19,4 @@ public class BlockReservationElements {
     public SelenideElement reservationPickupContentNextButton = $x("//*[contains(@class,'footer-block-right')]");
     public SelenideElement checkThatUserSeeDepotPopup = $x("//*[contains(@class, 'pickup-detail-popup')]");
     public SelenideElement checkThatUserSeeUniqueId = $x("//*[@id=\"depotMessage\"]/b");
-    public SelenideElement clickOnTheLogoImages = $x("//*[contains(@src, 'public/images/logo.png')]");
 }

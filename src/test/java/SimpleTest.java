@@ -14,22 +14,22 @@ public class SimpleTest extends MainPage {
         openSite();
         mainPageIsOpen();
         clickToReservationButton();
-        initPage.reservationPage.checkIsDisplayedPage();
-//        initPage.reservationPage.checkThatReservationPageIsOpen();
         initPage.reservationPage.clickOnReservationButton();
-        initPage.reservationPage.reservationDetailsPage();
-        initPage.reservationPage.userClickOnTheNextButton();
-        initPage.reservationPage.userSeeDepotPopupWithText();
-        initPage.reservationPage.userClickOnTheLogoImages();
+        initPage.reservationPage.clickOnTheNextButton();
+        initPage.reservationPage.seeDepotPopupWithText();
+        initPage.reservationPage.clickOnTheLogoImages();
         initPage.adminMenu.clickToAdmin();
-        initPage.adminMenu.checkThatUserSeeListOfKeys();
     }
+
     @Test
     @DisplayName( "User returns key" )
     public void ReturnKey() {
-        initPage.returnKey.userClickOnTheLogoImages();
-        initPage.returnKey.userClickOnReturnBlock();
-        initPage.returnKey.checkThatAllElementsIsDisplayed();
+        openSite();
+        mainPageIsOpen();
+        initPage.returnKey.clickOnReturnBlock();
         initPage.returnKey.clickOnFinalReturnButton();
+        initPage.returnKey.clickOnConfirmLocationPopup();
+        initPage.returnKey.clickOnFullstand();
+        initPage.returnKey.clickOnSaveButton();
     }
 }
