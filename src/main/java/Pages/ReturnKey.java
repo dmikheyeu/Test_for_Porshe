@@ -3,14 +3,28 @@ package Pages;
 import PagesElements.BlockReturnElements;
 import io.qameta.allure.Step;
 
+import javax.security.auth.login.Configuration;
+
 public class ReturnKey extends MainPage {
 
     BlockReturnElements returnPageElements = new BlockReturnElements();
 
+//    @Step ("User click on Return Block")
+//    public ReturnKey clickOnReturnBlock() {
+//        mainPageElements.blockReturn.click();
+//        return checkThatAllElementsIsDisplayed();
+//    }
+
     @Step ("User click on Return Block")
-    public ReturnKey clickOnReturnBlock() {
+    public void clickOnReturnBlock() {
         mainPageElements.blockReturn.click();
-        return checkThatAllElementsIsDisplayed();
+    }
+
+    @Step ("User click on Scan Object after Return Block")
+    public ReturnKey clickOnScanObjectReturnButton() {
+//        returnPageElements.scanObjectAfterReturnButton.click();
+        returnPageElements.scanObjectAfterReturnButton.doubleClick();
+        return  checkThatAllElementsIsDisplayed();
     }
 
     @Step ("Check that all elements id displayed")
