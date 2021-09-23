@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-public class SimpleTest extends MainPage {
+public class NewTests extends MainPage {
 
     InitPage initPage = new InitPage();
 

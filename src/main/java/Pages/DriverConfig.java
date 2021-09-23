@@ -2,17 +2,13 @@ package Pages;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-
 public class DriverConfig {
-    public Faker faker = new Faker();
 
     @BeforeAll
     @Step(value = "Configuration driver")

@@ -12,12 +12,14 @@ public class BlockReservation extends MainPage {
         reservationElements.pickupListItemWithGreenKey.shouldHave().isDisplayed();
         reservationElements.greenKey.shouldHave().isDisplayed();
         reservationElements.TitlePage.shouldHave().isDisplayed();
+
         return this;
     }
 
     @Step ("User click on green key or reservation")
     public BlockReservation clickOnReservationButton() {
         reservationElements.reservationButton.click();
+
         return reservationDetailsPage();
     }
 
@@ -28,12 +30,14 @@ public class BlockReservation extends MainPage {
         reservationElements.reservationPickupContentWholeForm.shouldHave().isDisplayed();
         reservationElements.reservationPickupContentBackButton.shouldHave().isDisplayed();
         reservationElements.reservationPickupContentNextButton.shouldHave().isDisplayed();
+
         return this;
     }
 
     @Step ("User click on the Next button")
     public BlockReservation clickOnTheNextButton() {
         reservationElements.reservationPickupContentNextButton.click();
+
         return seeDepotPopupWithText();
     }
 
@@ -43,8 +47,17 @@ public class BlockReservation extends MainPage {
         reservationElements.checkThatUserSeeUniqueId.shouldHave().isDisplayed();
         reservationElements.checkThatUserSeeUniqueId.getText();
         String IdUnique = String.valueOf(reservationElements.checkThatUserSeeUniqueId);
+
         return this;
     }
+
+    @Step("test")
+    public String test(){
+        String IdUnique = reservationElements.checkThatUserSeeUniqueId.getText();
+
+        return IdUnique;
+    }
+
 
 //    @Step ( "Check that User receive Depot Unique Number" )
 //    public BlockReservation receiveDepotNumber() {
