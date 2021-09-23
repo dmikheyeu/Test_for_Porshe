@@ -20,7 +20,8 @@ public class DriverConfig {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
         Configuration.startMaximized = true;
         Configuration.baseUrl="http://chronos.docker.localhost/menu.php";
-        Configuration.timeout = 6000;
+        Configuration.timeout = 7000;
+        Configuration.pageLoadTimeout = 5000;
     }
 
     @AfterAll
