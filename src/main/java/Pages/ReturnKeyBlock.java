@@ -3,51 +3,36 @@ package Pages;
 import PagesElements.BlockReturnElements;
 import io.qameta.allure.Step;
 
-import javax.security.auth.login.Configuration;
-
-public class ReturnKey extends MainPage {
+public class ReturnKeyBlock extends MainPage {
 
     BlockReturnElements returnPageElements = new BlockReturnElements();
 
-//    @Step ("User click on Return Block")
-//    public ReturnKey clickOnReturnBlock() {
-//        mainPageElements.blockReturn.click();
-//        return checkThatAllElementsIsDisplayed();
-//    }
-
     @Step ("User click on Return Block")
-    public void clickOnReturnBlock() {
+    public ReturnKeyBlock clickOnReturnBlock() {
         mainPageElements.blockReturn.click();
-    }
-
-    @Step ("User click on Scan Object after Return Block")
-    public ReturnKey clickOnScanObjectReturnButton() {
-//        returnPageElements.scanObjectAfterReturnButton.click();
-        returnPageElements.scanObjectAfterReturnButton.doubleClick();
-        return  checkThatAllElementsIsDisplayed();
+        return checkThatAllElementsIsDisplayed();
     }
 
     @Step ("Check that all elements id displayed")
-    public ReturnKey checkThatAllElementsIsDisplayed() {
+    public ReturnKeyBlock checkThatAllElementsIsDisplayed() {
         returnPageElements.pickupListItem.shouldHave().isDisplayed();
         mainPageElements.blockReturn.shouldHave().isDisplayed();
         returnPageElements.carKeyButton.shouldHave().isDisplayed();
         returnPageElements.scanObjectButtonOnReturnBlock.shouldHave().isDisplayed();
         returnPageElements.finalReturnButton.shouldHave().isDisplayed();
         mainPageElements.backButton.shouldHave().isDisplayed();
-
         return this;
     }
 
     @Step ("User click on Final Return Button")
-    public ReturnKey clickOnFinalReturnButton() {
+    public ReturnKeyBlock clickOnFinalReturnButton() {
         returnPageElements.finalReturnButton.click();
 
         return popupWithMap();
     }
 
     @Step ("Check that User see popup with map")
-    public ReturnKey popupWithMap() {
+    public ReturnKeyBlock popupWithMap() {
         returnPageElements.allPopup.shouldHave().isDisplayed();
         returnPageElements.confirmLocationButtonInPopup.shouldHave().isDisplayed();
 
@@ -55,14 +40,14 @@ public class ReturnKey extends MainPage {
     }
 
     @Step ("Click on Confirm Location Popup")
-    public ReturnKey clickOnConfirmLocationPopup() {
+    public ReturnKeyBlock clickOnConfirmLocationPopup() {
         returnPageElements.confirmLocationButtonInPopup.click();
 
         return pageWithFullstand();
     }
 
     @Step ("Check that popup is closed and User see Page with 'Fullstand' and 'Save' button is disabled ")
-    public ReturnKey pageWithFullstand() {
+    public ReturnKeyBlock pageWithFullstand() {
         returnPageElements.confirmLocationButtonInPopup.shouldNotHave().isDisplayed();
         returnPageElements.pickupDetailsBox.shouldHave().isDisplayed();
         returnPageElements.returnDetailsBox.shouldHave().isDisplayed();
@@ -74,29 +59,41 @@ public class ReturnKey extends MainPage {
     }
 
     @Step ("Click on Fullstand and check that 'Save' button is enabled")
-    public ReturnKey clickOnFullstand() {
+    public ReturnKeyBlock clickOnFullstand() {
         returnPageElements.fullstandButtonWithValue50.click();
 
         return saveButtonIsEnabled();
     }
 
     @Step ("Check that 'Save' button is enabled")
-    public ReturnKey saveButtonIsEnabled() {
+    public ReturnKeyBlock saveButtonIsEnabled() {
         returnPageElements.enabledSaveButton.shouldHave().isDisplayed();
 
         return this;
     }
 
     @Step ( "User click on Save Button" )
-    public ReturnKey clickOnSaveButton() {
+    public ReturnKeyBlock clickOnSaveButton() {
         returnPageElements.saveButton.click();
 
         return uniqueDepotAfterSaveButton();
     }
 
     @Step ( "Check that User see popup with Unique Depot" )
-    public ReturnKey uniqueDepotAfterSaveButton() {
+    public ReturnKeyBlock uniqueDepotAfterSaveButton() {
         returnPageElements.uniqueDepotAfterClickOnSaveButton.shouldHave().isDisplayed();
+
+        return this;
+    }
+
+    @Step ( "User click on Admin Tab" )
+    public BlockAdmin clickOnAdminTab() {
+        mainPageElements.blockAdmin.click();
+        return checkThatUserSeeListOfKeys();
+    }
+
+    @Step ( "Check that list of keys is displayed" )
+    public BlockAdmin checkThatUserSeeListOfKeys() {
 
         return this;
     }

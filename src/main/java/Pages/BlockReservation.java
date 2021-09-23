@@ -46,25 +46,14 @@ public class BlockReservation extends MainPage {
         reservationElements.checkThatUserSeeDepotPopup.shouldHave().isDisplayed();
         reservationElements.checkThatUserSeeUniqueId.shouldHave().isDisplayed();
         reservationElements.checkThatUserSeeUniqueId.getText();
-        String IdUnique = String.valueOf(reservationElements.checkThatUserSeeUniqueId);
-
         return this;
     }
 
-    @Step("test")
+    @Step("User received Unique Depot")
     public String test(){
         String IdUnique = reservationElements.checkThatUserSeeUniqueId.getText();
-
         return IdUnique;
     }
-
-
-//    @Step ( "Check that User receive Depot Unique Number" )
-//    public BlockReservation receiveDepotNumber() {
-//        reservationElements.checkThatUserSeeUniqueId.getText();
-//        System.out.println(receiveDepotNumber());
-//        return this;
-//    }
 
     @Step ("User click on the Logo Images")
     public void clickOnTheLogoImages() {

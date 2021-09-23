@@ -5,7 +5,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class BlockReturnElements {
 
-    public SelenideElement scanObjectAfterReturnButton = $x("//*[contains(@src,'public/images/barcode.png')]");
     public SelenideElement pickupListItem = $x("//*[contains(@class, 'pickup-list-item pickup-status2')]");
     public SelenideElement carKeyButton = $x("//*[contains(@class, 'return-btn-small return-btn-key')]");
     public SelenideElement scanObjectButtonOnReturnBlock = $x("//*[contains(@class, 'btn-block return-btn')]");
