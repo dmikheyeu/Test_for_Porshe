@@ -10,6 +10,7 @@ public class BlockAdmin extends MainPage{
     @Step ("Go to Admin page")
     public BlockAdmin clickToAdmin() {
         mainPageElements.blockAdmin.click();
+
         return checkThatUserSeeListOfKeys();
     }
 
@@ -20,6 +21,7 @@ public class BlockAdmin extends MainPage{
         blockAdminElements.SearchFieldButton.shouldHave().isDisplayed();
         blockAdminElements.PickupTableHeader.shouldHave().isDisplayed();
         blockAdminElements.DepotStringWithInfo.shouldHave().isDisplayed();
+
         return this;
     }
 }
