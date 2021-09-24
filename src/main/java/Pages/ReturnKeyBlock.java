@@ -1,25 +1,36 @@
 package Pages;
 
+import PagesElements.BlockAdminElements;
+import PagesElements.BlockReservationElements;
 import PagesElements.BlockReturnElements;
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ReturnKeyBlock extends MainPage {
 
     BlockReturnElements returnPageElements = new BlockReturnElements();
+    BlockAdminElements blockAdminElements = new BlockAdminElements();
 
     @Step ("User click on Return Block")
     public ReturnKeyBlock clickOnReturnBlock() {
         mainPageElements.blockReturn.click();
+        sleep(5000);
         return checkThatAllElementsIsDisplayed();
     }
 
     @Step ("Check that all elements id displayed")
     public ReturnKeyBlock checkThatAllElementsIsDisplayed() {
+
+        returnPageElements.finalReturnButton.shouldHave().isDisplayed();
+        returnPageElements.pickupListItem.shouldBe(Condition.visible, Duration.ofSeconds(10));
         returnPageElements.pickupListItem.shouldHave().isDisplayed();
         mainPageElements.blockReturn.shouldHave().isDisplayed();
         returnPageElements.carKeyButton.shouldHave().isDisplayed();
         returnPageElements.scanObjectButtonOnReturnBlock.shouldHave().isDisplayed();
-        returnPageElements.finalReturnButton.shouldHave().isDisplayed();
         mainPageElements.backButton.shouldHave().isDisplayed();
         return this;
     }
@@ -34,6 +45,7 @@ public class ReturnKeyBlock extends MainPage {
     @Step ("Check that User see popup with map")
     public ReturnKeyBlock popupWithMap() {
         returnPageElements.allPopup.shouldHave().isDisplayed();
+        returnPageElements.pickupListItem.shouldBe(Condition.visible, Duration.ofSeconds(10));
         returnPageElements.confirmLocationButtonInPopup.shouldHave().isDisplayed();
 
         return this;
@@ -49,6 +61,7 @@ public class ReturnKeyBlock extends MainPage {
     @Step ("Check that popup is closed and User see Page with 'Fullstand' and 'Save' button is disabled ")
     public ReturnKeyBlock pageWithFullstand() {
         returnPageElements.confirmLocationButtonInPopup.shouldNotHave().isDisplayed();
+        returnPageElements.pickupListItem.shouldBe(Condition.visible, Duration.ofSeconds(10));
         returnPageElements.pickupDetailsBox.shouldHave().isDisplayed();
         returnPageElements.returnDetailsBox.shouldHave().isDisplayed();
         mainPageElements.blockReturn.shouldHave().isDisplayed();
@@ -87,14 +100,13 @@ public class ReturnKeyBlock extends MainPage {
     }
 
     @Step ( "User click on Admin Tab" )
-    public BlockAdmin clickOnAdminTab() {
+    public void clickOnAdminTab() {
         mainPageElements.blockAdmin.click();
-        return checkThatUserSeeListOfKeys();
+        returnPageElements.pickupListItem.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 
     @Step ( "Check that list of keys is displayed" )
-    public BlockAdmin checkThatUserSeeListOfKeys() {
-
-        return this;
+    public void checkThatUserSeeListOfKeysIsEpmty(String Id) {
+        blockAdminElements.DepotUniqueNumber.shouldNotBe(Condition.text(Id));
     }
 }

@@ -1,11 +1,14 @@
 package Pages;
 
+import PagesElements.BlockAdminElements;
 import PagesElements.BlockReservationElements;
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
 public class BlockReservation extends MainPage {
 
     BlockReservationElements reservationElements = new BlockReservationElements();
+    BlockAdminElements blockAdminElements = new BlockAdminElements();
 
     @Step ( "Check that page have pickup-status 2 / green key" )
     public MainPage checkIsDisplayedPage() {
@@ -53,6 +56,12 @@ public class BlockReservation extends MainPage {
     public String test(){
         String IdUnique = reservationElements.checkThatUserSeeUniqueId.getText();
         return IdUnique;
+    }
+
+    @Step ("")
+    public void metodnazoviSravnivaetStringu(String id) {
+        blockAdminElements.DepotUniqueNumber.shouldHave(Condition.text(id));
+        System.out.println(id);
     }
 
     @Step ("User click on the Logo Images")
