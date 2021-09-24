@@ -1,7 +1,5 @@
 
 import Pages.*;
-import com.sun.tools.sjavac.comp.PubapiVisitor;
-import com.sun.tools.sjavac.comp.dependencies.PublicApiCollector;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +17,13 @@ public class NewTests extends MainPage {
         initPage.reservationPage.clickOnReservationButton();
         initPage.reservationPage.clickOnTheNextButton();
         initPage.reservationPage.seeDepotPopupWithText();
-        String IdUniqueblablbala = initPage.reservationPage.test();
+        initPage.reservationPage.receiveUniqueId();
         initPage.reservationPage.clickOnTheLogoImages();
-        initPage.adminMenu.clickToAdmin();
-        initPage.reservationPage.metodnazoviSravnivaetStringu(IdUniqueblablbala);
+        initPage.adminMenu.clickToAdminBlock();
+//        initPage.adminMenu.entersUniqueNumbers(); нужно переписать!
+        initPage.adminMenu.clickOnTheSuchenButton();
+        initPage.adminMenu.keyboardIsInvisible();
+        //check that Unique Number / Fach is Empty
     }
 
     @Test
@@ -45,7 +46,7 @@ public class NewTests extends MainPage {
     public void PickupValidReservationViaScanner() {
         openSite();
         mainPageIsOpen();
-//        initPage.barcodePage.clickOnBarcodeBlock();
+        initPage.blockBarcode.clickToBlockBarcode();
         initPage.reservationPage.clickOnTheNextButton();
         initPage.mainPageElements.logoPorshe.click();
         initPage.mainPageElements.blockAdmin.click();
@@ -58,7 +59,14 @@ public class NewTests extends MainPage {
     public void CheckAllBackButtons() {
         openSite();
         mainPageIsOpen();
-
+        initPage.mainPage.clickToReservationButton();
+        initPage.mainPage.clickToBackButton();
+        initPage.returnKey.clickToReservationButton();
+        initPage.mainPage.clickToBackButton();
+        initPage.adminMenu.clickToAdminBlock();
+        initPage.mainPage.clickToBackButton();
+        initPage.blockBarcode.clickToBlockBarcode();
+        initPage.mainPage.clickToBackButton();
     }
 
     @Test
@@ -66,10 +74,12 @@ public class NewTests extends MainPage {
     public void PickupKeyViaAdminTab() {
         openSite();
         mainPageIsOpen();
-        initPage.mainPageElements.blockAdmin.click();
-        initPage.blockAdminElements.enthanButton.click();
-        initPage.blockAdminElements.informationPopupAfterEnthan.click();
-        //взять Ид и сохранить
+        initPage.adminMenu.clickToAdminBlock();
+        initPage.adminMenu.clickToEntnahmeButton();
+        initPage.reservationPage.receiveUniqueId();
+        initPage.adminMenu.checkAdminEntnahmeTitle();
+        initPage.returnKey.clickOnSaveButton();
+//        initPage.returnKey
         //сравнить что ИД пустая
     }
 
@@ -80,8 +90,10 @@ public class NewTests extends MainPage {
         mainPageIsOpen();
         initPage.mainPageElements.blockAdmin.click();
         initPage.blockAdminElements.SearchFieldButton.click();
-        //ввести любое значение
-        //проверить что это значение пожтянулось
+        initPage.adminMenu.clickToSearchFieldText();
+        initPage.adminMenu.checkSearchFiledWorkedCorrectly();
+        initPage.adminMenu.clickOnTheSuchenButton();
+        //проверить что это значение подтянулось
     }
 
     @Test

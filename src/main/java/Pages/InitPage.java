@@ -11,4 +11,5 @@ public class InitPage {
    public ReturnKeyBlock returnKey = new ReturnKeyBlock();
    public MainPageElements mainPageElements = new MainPageElements();
    public BlockAdminElements blockAdminElements = new BlockAdminElements();
+   public BlockBarcode blockBarcode = new BlockBarcode();
 }

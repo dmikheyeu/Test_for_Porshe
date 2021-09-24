@@ -35,4 +35,9 @@ public class MainPage extends DriverConfig {
 
         return new BlockReservation().checkIsDisplayedPage();
     }
+
+    @Step ( "User click on 'Back' button" )
+    public void clickToBackButton() {
+        mainPageElements.backButton.click();
+    }
 }

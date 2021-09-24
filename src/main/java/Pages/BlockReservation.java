@@ -5,6 +5,8 @@ import PagesElements.BlockReservationElements;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 public class BlockReservation extends MainPage {
 
     BlockReservationElements reservationElements = new BlockReservationElements();
@@ -53,20 +55,30 @@ public class BlockReservation extends MainPage {
     }
 
     @Step("User received Unique Depot")
-    public String test(){
+    public String receiveUniqueId(){
         String IdUnique = reservationElements.checkThatUserSeeUniqueId.getText();
+        int len = IdUnique.length() - 1;
+        System.out.println(IdUnique);
+        System.out.println(IdUnique.substring(5, len));
         return IdUnique;
     }
 
-    @Step ("")
-    public void metodnazoviSravnivaetStringu(String id) {
-        blockAdminElements.DepotUniqueNumber.shouldHave(Condition.text(id));
-        System.out.println(id);
-    }
-
-    @Step ("User click on the Logo Images")
+    @Step ( "User click on the Logo Images" )
     public void clickOnTheLogoImages() {
 
         mainPageElements.logoPorshe.click();
+        mainPageElements.logoPorshe.shouldBe(Condition.visible, Duration.ofSeconds(10));
+    }
+
+//    @Step ("")
+//    public void metodnazoviSravnivaetStringu(String id) {
+//        blockAdminElements.DepotUniqueNumber.shouldHave(Condition.text(id));
+//        System.out.println(id);
+//    }
+
+    @Step ( "Check that Depot with Picked Key is Empty" )
+    public void checkThatDepotWithPickedKeyIsEmpty(String id) {
+        blockAdminElements.DepotUniqueNumber.shouldHave(Condition.text(id));
+        System.out.println(id);
     }
 }
