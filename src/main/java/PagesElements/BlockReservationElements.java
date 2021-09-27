@@ -7,10 +7,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class BlockReservationElements {
 
-    public SelenideElement TitlePage = $x("//*[contains(text(), 'Abholung')]");
+    public SelenideElement reservationTitlePage = $x("//*[contains(text(), 'Abholung')]");
     public SelenideElement pickupListItemWithGreenKey = $x("//*[contains(@class,'pickup-list-item pickup-status2')]");
     public SelenideElement pickupListItemWithYellowKey = $x("//*[contains(@class,'pickup-list-item pickup-status3')]");
-    public SelenideElement greenKey = $x("//*[contains(@src,'public/images/key-green.png')]");
+    public SelenideElement greenKeyIcon = $x("//*[contains(@src,'public/images/key-green.png')]");
     public SelenideElement reservationButton = $(byText("Reserviert"));
     public SelenideElement reservationPickupContentWholePage = $x("//*[contains(@class,'pickup-content')]");
     public SelenideElement reservationPickupContentMaps = $x("//*[contains(@class,'ol-viewport')]");

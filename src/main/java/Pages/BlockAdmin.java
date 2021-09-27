@@ -1,7 +1,6 @@
 package Pages;
 
 import PagesElements.BlockAdminElements;
-import PagesElements.BlockReservationElements;
 import io.qameta.allure.Step;
 
 public class BlockAdmin extends MainPage{
@@ -18,55 +17,60 @@ public class BlockAdmin extends MainPage{
 
     @Step ( "User click on Search Field" )
     public BlockAdmin clickToSearchFieldText() {
-        blockAdminElements.SearchFieldText.click();
+        blockAdminElements.searchFieldText.click();
         return keyboardDisplayed();
     }
 
     @Step ( "User see displayed KeyBoard" )
     public BlockAdmin keyboardDisplayed() {
-        blockAdminElements.KeyBoard.shouldHave().isDisplayed();
+        blockAdminElements.keyBoard.shouldHave().isDisplayed();
         return this;
     }
 
     @Step ( "User enters Unique number" )
     public void entersUniqueNumbers() {
-        blockAdminElements.KeyBoard.sendKeys(blockReservation.receiveUniqueId());
+        blockAdminElements.keyBoard.sendKeys(blockReservation.receiveUniqueId());
         System.out.println(blockReservation.receiveUniqueId());
     }
 
     @Step ("Check that List of keys is displayed")
     public BlockAdmin checkThatUserSeeListOfKeys() {
-        blockAdminElements.HeaderTitle.shouldHave().isDisplayed();
-        blockAdminElements.SearchFieldText.shouldHave().isDisplayed();
-        blockAdminElements.SearchFieldButton.shouldHave().isDisplayed();
-        blockAdminElements.PickupTableHeader.shouldHave().isDisplayed();
-        blockAdminElements.DepotStringWithInfo.shouldHave().isDisplayed();
+        blockAdminElements.adminHeaderTitle.shouldHave().isDisplayed();
+        blockAdminElements.searchFieldText.shouldHave().isDisplayed();
+        blockAdminElements.searchFieldButton.shouldHave().isDisplayed();
+        blockAdminElements.pickupTableHeader.shouldHave().isDisplayed();
+        blockAdminElements.depotStringWithInfo.shouldHave().isDisplayed();
 
         return this;
     }
 
     @Step ( "User click on 'Suchen' button" )
     public void clickOnTheSuchenButton() {
-        blockAdminElements.SuchenButton.click();
+
+        blockAdminElements.suchenButton.click();
     }
 
     @Step ( "Check that KeyBoard is invisible" )
     public void keyboardIsInvisible() {
-        blockAdminElements.KeyBoard.shouldNotBe().isDisplayed();
+
+        blockAdminElements.keyBoard.shouldNotBe().isDisplayed();
     }
 
     @Step ( "User click on 'Entnahme' button" )
     public void clickToEntnahmeButton() {
-        blockAdminElements.EntnahmeButton.click();
+
+        blockAdminElements.entnahmeButton.click();
     }
 
     @Step ( "User see Admin Entnahme Title" )
     public void checkAdminEntnahmeTitle() {
-        blockAdminElements.AdminEntnahmeTitle.shouldHave().isDisplayed();
+
+        blockAdminElements.adminEntnahmeTitle.shouldHave().isDisplayed();
     }
 
     @Step ( "Check that search result worked correctly" )
     public void checkSearchFiledWorkedCorrectly() {
-        blockAdminElements.SearchKeypad.sendKeys("69");
+
+        blockAdminElements.searchKeypad.sendKeys("69");
     }
 }

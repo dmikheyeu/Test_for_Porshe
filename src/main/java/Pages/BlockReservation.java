@@ -15,8 +15,8 @@ public class BlockReservation extends MainPage {
     @Step ( "Check that page have pickup-status 2 / green key" )
     public MainPage checkIsDisplayedPage() {
         reservationElements.pickupListItemWithGreenKey.shouldHave().isDisplayed();
-        reservationElements.greenKey.shouldHave().isDisplayed();
-        reservationElements.TitlePage.shouldHave().isDisplayed();
+        reservationElements.greenKeyIcon.shouldHave().isDisplayed();
+        reservationElements.reservationTitlePage.shouldHave().isDisplayed();
 
         return this;
     }
@@ -63,13 +63,6 @@ public class BlockReservation extends MainPage {
         return IdUnique;
     }
 
-    @Step ( "User click on the Logo Images" )
-    public void clickOnTheLogoImages() {
-
-        mainPageElements.logoPorshe.click();
-        mainPageElements.logoPorshe.shouldBe(Condition.visible, Duration.ofSeconds(10));
-    }
-
 //    @Step ("")
 //    public void metodnazoviSravnivaetStringu(String id) {
 //        blockAdminElements.DepotUniqueNumber.shouldHave(Condition.text(id));
@@ -78,7 +71,7 @@ public class BlockReservation extends MainPage {
 
     @Step ( "Check that Depot with Picked Key is Empty" )
     public void checkThatDepotWithPickedKeyIsEmpty(String id) {
-        blockAdminElements.DepotUniqueNumber.shouldHave(Condition.text(id));
+        blockAdminElements.depotUniqueNumber.shouldHave(Condition.text(id));
         System.out.println(id);
     }
 }

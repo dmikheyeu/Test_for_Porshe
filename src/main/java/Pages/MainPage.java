@@ -1,7 +1,10 @@
 package Pages;
 
 import PagesElements.MainPageElements;
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -38,6 +41,14 @@ public class MainPage extends DriverConfig {
 
     @Step ( "User click on 'Back' button" )
     public void clickToBackButton() {
+
         mainPageElements.backButton.click();
+    }
+
+    @Step ( "User click on the Logo Images" )
+    public void clickOnTheLogoImages() {
+
+        mainPageElements.logoPorshe.click();
+        mainPageElements.logoPorshe.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 }

@@ -4,7 +4,6 @@ import PagesElements.BlockAdminElements;
 import PagesElements.BlockReturnElements;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.sleep;
@@ -106,6 +105,6 @@ public class ReturnKeyBlock extends MainPage {
 
     @Step ( "Check that list of keys is displayed" )
     public void checkThatUserSeeListOfKeysIsEpmty(String Id) {
-        blockAdminElements.DepotUniqueNumber.shouldNotBe(Condition.text(Id));
+        blockAdminElements.depotUniqueNumber.shouldNotBe(Condition.text(Id));
     }
 }

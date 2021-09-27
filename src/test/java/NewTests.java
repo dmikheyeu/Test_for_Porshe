@@ -18,7 +18,7 @@ public class NewTests extends MainPage {
         initPage.reservationPage.clickOnTheNextButton();
         initPage.reservationPage.seeDepotPopupWithText();
         initPage.reservationPage.receiveUniqueId();
-        initPage.reservationPage.clickOnTheLogoImages();
+        clickOnTheLogoImages();
         initPage.adminMenu.clickToAdminBlock();
 //        initPage.adminMenu.entersUniqueNumbers(); нужно переписать!
         initPage.adminMenu.clickOnTheSuchenButton();
@@ -48,8 +48,8 @@ public class NewTests extends MainPage {
         mainPageIsOpen();
         initPage.blockBarcode.clickToBlockBarcode();
         initPage.reservationPage.clickOnTheNextButton();
-        initPage.mainPageElements.logoPorshe.click();
-        initPage.mainPageElements.blockAdmin.click();
+        clickOnTheLogoImages();
+        initPage.adminMenu.clickToAdminBlock();
         //взять Ид и сохранить
         //сравнить что ИД пустая
     }
@@ -89,7 +89,7 @@ public class NewTests extends MainPage {
         openSite();
         mainPageIsOpen();
         initPage.mainPageElements.blockAdmin.click();
-        initPage.blockAdminElements.SearchFieldButton.click();
+        initPage.blockAdminElements.searchFieldButton.click();
         initPage.adminMenu.clickToSearchFieldText();
         initPage.adminMenu.checkSearchFiledWorkedCorrectly();
         initPage.adminMenu.clickOnTheSuchenButton();

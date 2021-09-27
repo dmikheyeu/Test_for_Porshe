@@ -8,6 +8,7 @@ public class BlockBarcode {
 
     @Step ( "User click on Barcode Block" )
     public void clickToBlockBarcode() {
+
         mainPageElements.blockBarcode.click();
     }
 }
