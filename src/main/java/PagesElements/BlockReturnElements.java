@@ -9,8 +9,8 @@ public class BlockReturnElements {
     public SelenideElement carKeyButton = $x("//*[contains(@class, 'return-btn-small return-btn-key')]");
     public SelenideElement scanObjectButtonOnReturnBlock = $x("//*[contains(@class, 'btn-block return-btn')]");
     public SelenideElement finalReturnButton = $x("//*[contains(@id, 'nextbutton')]");
-    public SelenideElement allPopup = $x("//*[@id=\"exampleModal3\"]/div/div/div[1]");
-    public SelenideElement confirmLocationButtonInPopup = $x("//*[contains(@class, 'btn btn-primary')]");
+    public SelenideElement popupWithInfoParking = $x("//*[contains(text(), 'Ist der angezeigte Stellplatz korrekt?')]");
+    public SelenideElement confirmLocationButtonInPopup = $x("//*[@id=\"exampleModal3\"]/div/div/div[2]/button[2]");
     public SelenideElement pickupDetailsBox = $x("//*[contains(@class, 'pickup-detail-box')]");
     public SelenideElement returnDetailsBox = $x("//*[contains(@id, 'returndetails')]");
     public SelenideElement saveButton = $x("//*[contains(@class, 'footer-block-right')]");

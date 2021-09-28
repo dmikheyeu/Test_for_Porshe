@@ -42,10 +42,8 @@ public class ReturnKeyBlock extends MainPage {
 
     @Step ("Check that User see popup with map")
     public ReturnKeyBlock popupWithMap() {
-        returnPageElements.allPopup.shouldHave().isDisplayed();
-        returnPageElements.pickupListItem.shouldBe(Condition.visible, Duration.ofSeconds(10));
-        returnPageElements.confirmLocationButtonInPopup.shouldHave().isDisplayed();
-
+//        returnPageElements.popupWithInfoParking.shouldHave().isDisplayed();
+        returnPageElements.popupWithInfoParking.shouldBe(Condition.visible, Duration.ofSeconds(10));
         return this;
     }
 
@@ -59,7 +57,6 @@ public class ReturnKeyBlock extends MainPage {
     @Step ("Check that popup is closed and User see Page with 'Fullstand' and 'Save' button is disabled ")
     public ReturnKeyBlock pageWithFullstand() {
         returnPageElements.confirmLocationButtonInPopup.shouldNotHave().isDisplayed();
-        returnPageElements.pickupListItem.shouldBe(Condition.visible, Duration.ofSeconds(10));
         returnPageElements.pickupDetailsBox.shouldHave().isDisplayed();
         returnPageElements.returnDetailsBox.shouldHave().isDisplayed();
         mainPageElements.blockReturn.shouldHave().isDisplayed();
@@ -100,11 +97,11 @@ public class ReturnKeyBlock extends MainPage {
     @Step ( "User click on Admin Tab" )
     public void clickOnAdminTab() {
         mainPageElements.blockAdmin.click();
-        returnPageElements.pickupListItem.shouldBe(Condition.visible, Duration.ofSeconds(10));
+        blockAdminElements.adminHeaderTitle.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 
-    @Step ( "Check that list of keys is displayed" )
-    public void checkThatUserSeeListOfKeysIsEpmty(String Id) {
-        blockAdminElements.depotUniqueNumber.shouldNotBe(Condition.text(Id));
-    }
+//    @Step ( "Check that list of keys is displayed" )
+//    public void checkThatUserSeeListOfKeysIsEmpty(String Id) {
+//        blockAdminElements.depotUniqueNumber.shouldNotBe(Condition.text(Id));
+//    }
 }

@@ -1,13 +1,23 @@
 
 import Pages.*;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
+
+//@Step("User click on yellow key or reservation")
+//public BlockReservation clickOnYellowKey() {
+//        reservationElements.reservationButton.shouldNot().click();
+//        return userSeeYellowKeyInBlockReservation();
+//        }
 
 
 public class NewTests extends MainPage {
 
     InitPage initPage = new InitPage();
 
+    @Tag("Сравнить, что поле с Fach - пустое.")
     @Test
     @DisplayName("Pick-up valid reservation (green key) via \"My registration\" tab")
     public void PickupValidReservation(){
@@ -17,15 +27,17 @@ public class NewTests extends MainPage {
         initPage.reservationPage.clickOnReservationButton();
         initPage.reservationPage.clickOnTheNextButton();
         initPage.reservationPage.seeDepotPopupWithText();
-        initPage.reservationPage.receiveUniqueId();
+        String SavedId = initPage.reservationPage.receiveUniqueId();
         clickOnTheLogoImages();
         initPage.adminMenu.clickToAdminBlock();
-//        initPage.adminMenu.entersUniqueNumbers(); нужно переписать!
+        initPage.adminMenu.clickToSearchFieldText();
+        initPage.adminMenu.entersUniqueNumbers(SavedId);
         initPage.adminMenu.clickOnTheSuchenButton();
         initPage.adminMenu.keyboardIsInvisible();
-        //check that Unique Number / Fach is Empty
+        //Сравнить, что поле с Fach - пустое.
     }
 
+    @Tag("Сравнить, что поле с Fach - целое.")
     @Test
     @DisplayName( "User returns key" )
     public void ReturnKey() {
@@ -35,12 +47,15 @@ public class NewTests extends MainPage {
         initPage.returnKey.clickOnFinalReturnButton();
         initPage.returnKey.clickOnConfirmLocationPopup();
         initPage.returnKey.clickOnFullstand();
-        //добавить метод получения ИД
         initPage.returnKey.clickOnSaveButton();
+        String SavedId = initPage.reservationPage.receiveUniqueId();
+        initPage.mainPage.clickOnTheLogoImages();
         initPage.returnKey.clickOnAdminTab();
-//        initPage.returnKey.checkThatUserSeeListOfKeysIsEpmty(String Id);
+//        initPage.returnKey.checkThatUserSeeListOfKeysIsEmpty(SavedId);
+        //Сравнить, что поле с Fach - целое.
     }
 
+    @Tag("Сравнить, что поле с Fach - пустое.")
     @Test
     @DisplayName( "Pick-up valid reservation (green key) via Scanner" )
     public void PickupValidReservationViaScanner() {
@@ -48,12 +63,13 @@ public class NewTests extends MainPage {
         mainPageIsOpen();
         initPage.blockBarcode.clickToBlockBarcode();
         initPage.reservationPage.clickOnTheNextButton();
+        String SavedId = initPage.reservationPage.receiveUniqueId();
         clickOnTheLogoImages();
         initPage.adminMenu.clickToAdminBlock();
-        //взять Ид и сохранить
-        //сравнить что ИД пустая
+        //Сравнить, что поле с Fach - пустое.
     }
 
+    @Tag("Думаю что +- все проверки сделаны")
     @Test
     @DisplayName( "Check all 'Back' buttons" )
     public void CheckAllBackButtons() {
@@ -69,6 +85,7 @@ public class NewTests extends MainPage {
         initPage.mainPage.clickToBackButton();
     }
 
+    @Tag("Сравнить, что поле с Fach - пустое.")
     @Test
     @DisplayName( "Pick up key via Admin tab" )
     public void PickupKeyViaAdminTab() {
@@ -76,13 +93,13 @@ public class NewTests extends MainPage {
         mainPageIsOpen();
         initPage.adminMenu.clickToAdminBlock();
         initPage.adminMenu.clickToEntnahmeButton();
-        initPage.reservationPage.receiveUniqueId();
         initPage.adminMenu.checkAdminEntnahmeTitle();
         initPage.returnKey.clickOnSaveButton();
-//        initPage.returnKey
-        //сравнить что ИД пустая
+        String SavedId = initPage.reservationPage.receiveUniqueId();
+        //Сравнить, что поле с Fach - пустое.
     }
 
+    @Tag("Думаю что done")
     @Test
     @DisplayName( "Check Search on Admin tab" )
     public void CheckSearchOnAdminTab() {
@@ -91,50 +108,48 @@ public class NewTests extends MainPage {
         initPage.mainPageElements.blockAdmin.click();
         initPage.blockAdminElements.searchFieldButton.click();
         initPage.adminMenu.clickToSearchFieldText();
-        initPage.adminMenu.checkSearchFiledWorkedCorrectly();
+        initPage.adminMenu.enterValue69();
         initPage.adminMenu.clickOnTheSuchenButton();
-        //проверить что это значение подтянулось
+        initPage.adminMenu.checkValue69InPickupDetailTable();
     }
 
+    @Tag("Думаю что done")
     @Test
     @DisplayName( "Pick-up reservation (yellow key) via \"My registration\" tab" )
     public void PickupReservationWithYellowKey() {
         openSite();
         mainPageIsOpen();
         initPage.mainPage.clickToReservationButton();
-        initPage.reservationPage.clickOnReservationButton();
-        //check that Reservation Page isn't opened
-        //check that key is yellow
+        initPage.reservationPage.clickOnYellowKey();
     }
 
+    @Tag("Думаю что done")
     @Test
     @DisplayName( "Pick-up reservation (red key) via \"My registration\" tab" )
     public void PickupReservationWithRedKey() {
         openSite();
         mainPageIsOpen();
         initPage.mainPage.clickToReservationButton();
-        initPage.reservationPage.clickOnReservationButton();
-        //check that Reservation Page isn't opened
-        //check that key is red
+        initPage.reservationPage.clickOnRedKey();
     }
 
+    @Tag("Дописать проверки финальные")
     @Test
     @DisplayName( "Pick-up reservation (yellow key) via \"Scannen Barcode\" tab" )
     public void PickupReservationWithYellowKeyViaScannenBarcode() {
         openSite();
         mainPageIsOpen();
         initPage.mainPageElements.blockBarcode.click();
-        initPage.reservationPage.clickOnReservationButton(); // не факт что здесь клик отработает
-        //check that Reservation Page isn't opened
+        initPage.reservationPage.clickOnReservationButton();
     }
 
+    @Tag("Дописать проверки финальные")
     @Test
     @DisplayName( "Pick-up reservation (red key) via \"Scannen barcode\" tab" )
     public void PickupReservationWithRedKeyViaScannenBarcode() {
         openSite();
         mainPageIsOpen();
         initPage.mainPageElements.blockBarcode.click();
-        initPage.reservationPage.clickOnReservationButton(); // не факт что здесь клик отработает
-        //check that Reservation Page isn't opened
+        initPage.reservationPage.clickOnReservationButton();
     }
 }

@@ -3,10 +3,11 @@ package Pages;
 import PagesElements.BlockAdminElements;
 import io.qameta.allure.Step;
 
+import static java.lang.Thread.sleep;
+
 public class BlockAdmin extends MainPage{
 
     BlockAdminElements blockAdminElements = new BlockAdminElements();
-    BlockReservation blockReservation = new BlockReservation();
 
     @Step ("Go to Admin page")
     public BlockAdmin clickToAdminBlock() {
@@ -23,14 +24,13 @@ public class BlockAdmin extends MainPage{
 
     @Step ( "User see displayed KeyBoard" )
     public BlockAdmin keyboardDisplayed() {
-        blockAdminElements.keyBoard.shouldHave().isDisplayed();
+        blockAdminElements.keypad.shouldHave().isDisplayed();
         return this;
     }
 
     @Step ( "User enters Unique number" )
-    public void entersUniqueNumbers() {
-        blockAdminElements.keyBoard.sendKeys(blockReservation.receiveUniqueId());
-        System.out.println(blockReservation.receiveUniqueId());
+    public void entersUniqueNumbers(String SavedId) {
+        blockAdminElements.keypad.sendKeys(SavedId);
     }
 
     @Step ("Check that List of keys is displayed")
@@ -53,7 +53,7 @@ public class BlockAdmin extends MainPage{
     @Step ( "Check that KeyBoard is invisible" )
     public void keyboardIsInvisible() {
 
-        blockAdminElements.keyBoard.shouldNotBe().isDisplayed();
+        blockAdminElements.keypad.shouldNotBe().isDisplayed();
     }
 
     @Step ( "User click on 'Entnahme' button" )
@@ -69,8 +69,15 @@ public class BlockAdmin extends MainPage{
     }
 
     @Step ( "Check that search result worked correctly" )
-    public void checkSearchFiledWorkedCorrectly() {
+    public BlockAdmin enterValue69() {
 
-        blockAdminElements.searchKeypad.sendKeys("69");
+        blockAdminElements.keypad.sendKeys("69");
+        return checkValue69InPickupDetailTable();
+    }
+
+    @Step ( " " )
+    public BlockAdmin checkValue69InPickupDetailTable() {
+        blockAdminElements.value69.shouldHave().isDisplayed();
+        return this;
     }
 }
