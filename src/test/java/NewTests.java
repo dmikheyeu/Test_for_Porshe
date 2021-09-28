@@ -1,23 +1,14 @@
 
 import Pages.*;
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-
-//@Step("User click on yellow key or reservation")
-//public BlockReservation clickOnYellowKey() {
-//        reservationElements.reservationButton.shouldNot().click();
-//        return userSeeYellowKeyInBlockReservation();
-//        }
-
 
 public class NewTests extends MainPage {
 
     InitPage initPage = new InitPage();
 
-    @Tag("Сравнить, что поле с Fach - пустое.")
+    @Tag("Думаю что done")
     @Test
     @DisplayName("Pick-up valid reservation (green key) via \"My registration\" tab")
     public void PickupValidReservation(){
@@ -34,10 +25,10 @@ public class NewTests extends MainPage {
         initPage.adminMenu.entersUniqueNumbers(SavedId);
         initPage.adminMenu.clickOnTheSuchenButton();
         initPage.adminMenu.keyboardIsInvisible();
-        //Сравнить, что поле с Fach - пустое.
+        initPage.adminMenu.checkThatFachIsEmpty(SavedId);
     }
 
-    @Tag("Сравнить, что поле с Fach - целое.")
+    @Tag("Думаю что done")
     @Test
     @DisplayName( "User returns key" )
     public void ReturnKey() {
@@ -51,11 +42,16 @@ public class NewTests extends MainPage {
         String SavedId = initPage.reservationPage.receiveUniqueId();
         initPage.mainPage.clickOnTheLogoImages();
         initPage.returnKey.clickOnAdminTab();
-//        initPage.returnKey.checkThatUserSeeListOfKeysIsEmpty(SavedId);
-        //Сравнить, что поле с Fach - целое.
+
+        initPage.adminMenu.clickToSearchFieldText();
+        initPage.adminMenu.entersUniqueNumbers(SavedId);
+        initPage.adminMenu.clickOnTheSuchenButton();
+        initPage.adminMenu.keyboardIsInvisible();
+
+        initPage.adminMenu.checkThatFachIsNonEmpty(SavedId);
     }
 
-    @Tag("Сравнить, что поле с Fach - пустое.")
+    @Tag("Думаю что done")
     @Test
     @DisplayName( "Pick-up valid reservation (green key) via Scanner" )
     public void PickupValidReservationViaScanner() {
@@ -66,7 +62,7 @@ public class NewTests extends MainPage {
         String SavedId = initPage.reservationPage.receiveUniqueId();
         clickOnTheLogoImages();
         initPage.adminMenu.clickToAdminBlock();
-        //Сравнить, что поле с Fach - пустое.
+        initPage.adminMenu.checkThatFachIsEmpty(SavedId);
     }
 
     @Tag("Думаю что +- все проверки сделаны")
@@ -85,7 +81,7 @@ public class NewTests extends MainPage {
         initPage.mainPage.clickToBackButton();
     }
 
-    @Tag("Сравнить, что поле с Fach - пустое.")
+    @Tag("Думаю что done")
     @Test
     @DisplayName( "Pick up key via Admin tab" )
     public void PickupKeyViaAdminTab() {
@@ -96,7 +92,7 @@ public class NewTests extends MainPage {
         initPage.adminMenu.checkAdminEntnahmeTitle();
         initPage.returnKey.clickOnSaveButton();
         String SavedId = initPage.reservationPage.receiveUniqueId();
-        //Сравнить, что поле с Fach - пустое.
+        initPage.adminMenu.checkThatFachIsEmpty(SavedId);
     }
 
     @Tag("Думаю что done")

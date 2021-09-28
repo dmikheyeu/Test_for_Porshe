@@ -40,7 +40,7 @@ public class BlockReservation extends MainPage {
 
     @Step ("User click on yellow key or reservation")
     public BlockReservation clickOnRedKey() {
-        reservationElements.reservationButton.shouldNot().click();
+        reservationElements.reservationButton.shouldBe(Condition.disappear);
         return userSeeRedKeyInBlockReservation();
     }
 

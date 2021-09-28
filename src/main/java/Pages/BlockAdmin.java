@@ -1,8 +1,12 @@
 package Pages;
 
 import PagesElements.BlockAdminElements;
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.$x;
 import static java.lang.Thread.sleep;
 
 public class BlockAdmin extends MainPage{
@@ -79,5 +83,15 @@ public class BlockAdmin extends MainPage{
     public BlockAdmin checkValue69InPickupDetailTable() {
         blockAdminElements.value69.shouldHave().isDisplayed();
         return this;
+    }
+
+    @Step ( "check that Fach is Empty " )
+    public void checkThatFachIsEmpty(String Id) {
+        $x("//table/tbody/tr["+Id+"]//*[contains(text(), 'ENTNAHME')]").shouldHave().isDisplayed();
+    }
+
+    @Step ( "check that Fach is Empty " )
+    public void checkThatFachIsNonEmpty(String Id) {
+        $x("//table/tbody/tr["+Id+"]//*[contains(text(), 'ENTNAHME')]").shouldNotHave().isDisplayed();
     }
 }
