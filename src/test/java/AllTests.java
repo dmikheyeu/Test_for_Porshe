@@ -8,7 +8,7 @@ public class AllTests extends MainPage {
 
     InitPage initPage = new InitPage();
 
-    @Tag("Думаю что done")
+    @Tag("Green Key")
     @Test
     @DisplayName("Pick-up valid reservation (green key) via \"My registration\" tab")
     public void PickupValidReservation(){
@@ -28,7 +28,7 @@ public class AllTests extends MainPage {
         initPage.adminMenu.checkThatFachIsEmpty(SavedId);
     }
 
-    @Tag("Думаю что done")
+    @Tag("Green Key")
     @Test
     @DisplayName( "User returns key" )
     public void ReturnKey() {
@@ -51,7 +51,7 @@ public class AllTests extends MainPage {
         initPage.adminMenu.checkThatFachIsNonEmpty(SavedId);
     }
 
-    @Tag("Думаю что done")
+    @Tag("Green Key")
     @Test
     @DisplayName( "Pick-up valid reservation (green key) via Scanner" )
     public void PickupValidReservationViaScanner() {
@@ -65,7 +65,7 @@ public class AllTests extends MainPage {
         initPage.adminMenu.checkThatFachIsEmpty(SavedId);
     }
 
-    @Tag("Думаю что +- все проверки сделаны")
+    @Tag("Green Key")
     @Test
     @DisplayName( "Check all 'Back' buttons" )
     public void CheckAllBackButtons() {
@@ -81,7 +81,7 @@ public class AllTests extends MainPage {
         initPage.mainPage.clickToBackButton();
     }
 
-    @Tag("Думаю что done")
+    @Tag("Green Key")
     @Test
     @DisplayName( "Pick up key via Admin tab" )
     public void PickupKeyViaAdminTab() {
@@ -95,7 +95,7 @@ public class AllTests extends MainPage {
         initPage.adminMenu.checkThatFachIsEmpty(SavedId);
     }
 
-    @Tag("Думаю что done")
+    @Tag("Green Key")
     @Test
     @DisplayName( "Check Search on Admin tab" )
     public void CheckSearchOnAdminTab() {
@@ -109,7 +109,7 @@ public class AllTests extends MainPage {
         initPage.adminMenu.checkValue69InPickupDetailTable();
     }
 
-    @Tag("Думаю что done")
+    @Tag("Yellow Key")
     @Test
     @DisplayName( "Pick-up reservation (yellow key) via \"My registration\" tab" )
     public void PickupReservationWithYellowKey() {
@@ -119,7 +119,7 @@ public class AllTests extends MainPage {
         initPage.reservationPage.clickOnYellowKey();
     }
 
-    @Tag("Думаю что done")
+    @Tag("Red Key")
     @Test
     @DisplayName( "Pick-up reservation (red key) via \"My registration\" tab" )
     public void PickupReservationWithRedKey() {
@@ -129,7 +129,7 @@ public class AllTests extends MainPage {
         initPage.reservationPage.clickOnRedKey();
     }
 
-    @Tag("Дописать проверки финальные")
+    @Tag("Yellow Key")
     @Test
     @DisplayName( "Pick-up reservation (yellow key) via \"Scannen Barcode\" tab" )
     public void PickupReservationWithYellowKeyViaScannenBarcode() {
@@ -139,7 +139,7 @@ public class AllTests extends MainPage {
         initPage.reservationPage.clickOnReservationButton();
     }
 
-    @Tag("Дописать проверки финальные")
+    @Tag("Red Key")
     @Test
     @DisplayName( "Pick-up reservation (red key) via \"Scannen barcode\" tab" )
     public void PickupReservationWithRedKeyViaScannenBarcode() {
