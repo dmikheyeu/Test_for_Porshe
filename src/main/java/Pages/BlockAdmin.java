@@ -1,13 +1,8 @@
 package Pages;
 
 import PagesElements.BlockAdminElements;
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-
-import java.time.Duration;
-
 import static com.codeborne.selenide.Selenide.$x;
-import static java.lang.Thread.sleep;
 
 public class BlockAdmin extends MainPage{
 

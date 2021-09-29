@@ -42,7 +42,6 @@ public class ReturnKeyBlock extends MainPage {
 
     @Step ("Check that User see popup with map")
     public ReturnKeyBlock popupWithMap() {
-//        returnPageElements.popupWithInfoParking.shouldHave().isDisplayed();
         returnPageElements.popupWithInfoParking.shouldBe(Condition.visible, Duration.ofSeconds(10));
         return this;
     }
@@ -99,9 +98,4 @@ public class ReturnKeyBlock extends MainPage {
         mainPageElements.blockAdmin.click();
         blockAdminElements.adminHeaderTitle.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
-
-//    @Step ( "Check that list of keys is displayed" )
-//    public void checkThatUserSeeListOfKeysIsEmpty(String Id) {
-//        blockAdminElements.depotUniqueNumber.shouldNotBe(Condition.text(Id));
-//    }
 }

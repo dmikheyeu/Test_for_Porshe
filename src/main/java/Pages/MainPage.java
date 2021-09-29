@@ -3,7 +3,6 @@ package Pages;
 import PagesElements.MainPageElements;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -15,7 +14,6 @@ public class MainPage extends DriverConfig {
     @Step( "Open to site" )
     public void openSite() {
         open("");
-
         if (!mainPageElements.idUser.exists()) {
             mainPageElements.logoPorshe.click();
             }
